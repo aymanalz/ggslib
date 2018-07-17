@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="kt3d" />
+		<Option execution_dir="D:/Workspace/Codes/gslib90sc/gslib90sc/gslib/kt3d/" />
+		<Option pch_mode="2" />
+		<Option compiler="gfortran" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/kt3d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="../gslib/bin/Debug/libgslib.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/kt3d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gfortran" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="../gslib/bin/Release/libgslib.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgfortran.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libatomic.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libatomic.dll.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libcaf_single.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgcc.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgcc_s.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgcov.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgfortran.dll.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libgfortranbegin.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libquadmath.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libquadmath.dll.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libssp.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libssp.dll.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libssp_nonshared.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libstdc++.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libstdc++.dll.a" />
+					<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/gcc/mingw32/4.9.2/libsupc++.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="SISIM.FOR">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="SISIM.INC" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

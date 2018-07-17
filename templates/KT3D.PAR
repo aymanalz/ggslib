@@ -1,0 +1,29 @@
+                  Parameters for KT3D
+                  *******************
+
+START OF PARAMETERS:
+../data/cluster.dat              \data_file # the input data in a simplified Geo-EAS formatted file.
+1   2   3    4     5             \X, Y, Z, var, sec_var # the columns for the x, y, and z coordinates, the variable to be estimated, and the external drift variable (or non-stationary mean).
+-1.0e21   1.0e21                 \ trim_low, trim_up # all values strictly less than tmin and greater than or equal to tmax are ignored.
+0                                \krige_option # set to 0 for kriging a grid of points or blocks, to 1 for cross validation with the data in datafl and to 2 for jackknifing with data in following file.
+xvk.dat                          \jackknife_data_file # file with locations to perform estimation (jackknife option).
+1   2   0    3    0              \jack_X,jack_Y,jack_Z,jack_var, jack_sec #  the columns for the x, y, and z coordinates, the variable, and the secondary variable in jackfl
+3                                \debugging_level # an integer debugging level between 0 and 3. The higher the debugging level the more output. The normal levels are 0 and 1 which summarize the results. Levels 2 and 3 provide all the kriging matrices and data used for the estimation of every point/block. It is recommended that a high debugging level not be used with a large grid. 
+kt3d.dbg                         \debugging_output_file # the debugging output is written to this file.
+kt3d.out                         \kriged_output_file # the output grid is written to this file. The output contains the estimate and the kriging variance for every point/block on the grid, cycling fastest on x then y and finally z Unestimated points are flagged with a large negative number (-999.). The parameter UNEST, in the source code, can be changed if a different number is preferred.
+50   0.5    1.0                  \nx,xmn,xsiz # definition of the grid system (x axis).
+50   0.5    1.0                  \ny,ymn,ysiz # definition of the grid system (y axis).
+1    0.5    1.0                  \nz,zmn,zsiz # definition of the grid system (z axis).
+1    1      1                    \blockdisX, blockdisY, blockdisZ # the number of discretization points for a block. If nxdis, nydis and nzdis are all set to 1 then point kriging is performed. 
+4    8                           \min_data_points, max_data_points #  the minimum and maximum number of data points to use for kriging a block.
+0                                \max_per_octant # the maximum number to retain from an octant (an octant search is not used if noct=0
+20.0  20.0  20.0                 \max_search_radii_1, max_search_radii_2, max_search_radii_3 # the search radii in the maximum horizontal direction, minimum horizontal direction, and vertical direction (see angles below).
+ 0.0   0.0   0.0                 \search_angles_1, search_angles_2, search_angles_3 # the angle parameters that describe the orientation of the search ellipsoid. See the discussion on anisotropy specification associated with Figure II.4.
+0     2.302                      \krige_type, skmean #  if ikrige is set to 0 then stationary simple kriging with (skmean) will be performed, if ikrige is set to 1 then ordinary kriging will be performed, if ikrige is set to 2 then non-stationary simple kriging with means taken from secfile will be performed, and if ikrige is set to 3 then kriging with an external drift will be performed. Note that power law variogram models (it=4) are not allowed with simple kriging.
+0 0 0 0 0 0 0 0 0                \drift_x,drift_y,drift_z,drift_xx,drift_yy,drift_zz,drift_xy,drift_xz,drift_zy # indicators for those drift terms to be included in the trend model. idrif(i) is set to 1 if the drift term number i should be included, and is set to zero if not.
+0                                \estimate_trend_flg #  indicator of whether to estimate the trend (itrend =1) or the variable (itrend =0). The trend may be kriged with ordinary kriging (all idrif(i) values set to 0) or with any combination of trend kriging (some idrif(i) terms set to 1).
+extdrift.dat                     \drift_gridded_file # a file for the gridded external drift variable. The external drift variable is needed at all grid locations to be estimated. The origin of the grid network, the number of nodes, and the spacing of the grid nodes should be exactly the same as the grid being kriged in kt3d This variable is used only if ikrige=2 or 3.
+4                                \col_number_gridded_file # the column number in secfl for the gridded secondary variable. This variable is used if ikrige=2 or 3.
+1    0.2                         \n_structures, nugget_effect #  the number of variogram structures and the nugget constant. The nugget constant does not count as a structure.
+1    0.8  0.0   0.0   0.0        \it,cc,ang1,ang2,ang3 # For each of the nst nested structures one must define it, the type of structure; cc, the c parameter; ang1,ang2,ang3, the angles defining the geometric anisotropy.
+         10.0  10.0  10.0        \a_hmax, a_hmin, a_vert # aa_hmax, the maximum horizontal range; aa_hmin, the minimum horizontal range; and aa_vert, the vertical range.

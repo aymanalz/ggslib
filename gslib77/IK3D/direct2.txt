@@ -1,0 +1,10 @@
+Irregular Spaced 29 primary and secondary data
+7
+Xlocation
+Ylocation
+Threshold:  1 
+Threshold:  2 
+Threshold:  3 
+Threshold:  4 
+Threshold:  5 
+3 3 0 0 0 1 1

@@ -1,0 +1,59 @@
+
+ Threshold number  1 =         .500
+           global prob value =    .1200
+           number of structures =   1
+           nugget effect        =    .1500
+           type of structure   1 =   1
+           aa parameter         =      10.0000
+           cc parameter         =        .8500
+           ang1, ang2, ang3     =    .00   .00   .00
+           anis1, anis2         =       1.0000      1.0000
+
+ Threshold number  2 =        1.000
+           global prob value =    .2900
+           number of structures =   1
+           nugget effect        =    .1000
+           type of structure   1 =   1
+           aa parameter         =      10.0000
+           cc parameter         =        .9000
+           ang1, ang2, ang3     =    .00   .00   .00
+           anis1, anis2         =       1.0000      1.0000
+
+ Threshold number  3 =        2.500
+           global prob value =    .5000
+           number of structures =   1
+           nugget effect        =    .1000
+           type of structure   1 =   1
+           aa parameter         =      10.0000
+           cc parameter         =        .9000
+           ang1, ang2, ang3     =    .00   .00   .00
+           anis1, anis2         =       1.0000      1.0000
+
+ Threshold number  4 =        5.000
+           global prob value =    .7400
+           number of structures =   1
+           nugget effect        =    .1000
+           type of structure   1 =   1
+           aa parameter         =      10.0000
+           cc parameter         =        .9000
+           ang1, ang2, ang3     =    .00   .00   .00
+           anis1, anis2         =       1.0000      1.0000
+
+ Threshold number  5 =       10.000
+           global prob value =    .8800
+           number of structures =   1
+           nugget effect        =    .1500
+           type of structure   1 =   1
+           aa parameter         =      10.0000
+           cc parameter         =        .8500
+           ang1, ang2, ang3     =    .00   .00   .00
+           anis1, anis2         =       1.0000      1.0000
+
+ Summary of order relations (number and magnitude): 
+   Threshold 1 Number =      7 Average =    .0067 Maximum =    .0147
+   Threshold 2 Number =     15 Average =    .0288 Maximum =    .1002
+   Threshold 3 Number =     26 Average =    .0167 Maximum =    .0560
+   Threshold 4 Number =     40 Average =    .0246 Maximum =    .1260
+   Threshold 5 Number =     26 Average =    .0113 Maximum =    .0702
+
+ Total of   22.80% with an average magnitude of    .0192

@@ -1,0 +1,29 @@
+Parameters for KT3D 
+******************* 
+ 
+START OF PARAMETERS: 
+.\working_directory\data1.dat 
+1 2 3 4 5 
+-1e+21 1e+21 
+0 
+xvk.dat 
+1 2 0 3 0 
+3 
+kt3d.dbg 
+kt3d.out 
+100 0 0.5 
+100 0 0.5 
+1 0 1.0 
+1 1 1 
+4 20 
+0 
+200 200 200 
+0.0 0.0 0.0 
+1 2.302 
+0 0 0 0 0 0 0 0 0 
+0 
+extdrift.dat 
+4 
+1 0 
+1 3 0 0 0 
+30.0 30.0 30.0 

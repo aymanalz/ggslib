@@ -1,0 +1,59 @@
+
+ Covariance Look up table and search for previously
+ simulated grid nodes.  The maximum range in each 
+ coordinate direction for covariance look up is:
+           X direction:    17224.4102    
+           Y direction:    17224.4102    
+           Z direction:    0.00000000    
+ Node Values are not searched beyond this distance!
+
+
+ Realization   1: number   =    31758
+                  mean     =       0.0065 (close to 0.0?)
+                  variance =       1.0017 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   2: number   =    31758
+                  mean     =      -0.0105 (close to 0.0?)
+                  variance =       0.9852 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   3: number   =    31758
+                  mean     =      -0.0008 (close to 0.0?)
+                  variance =       1.0045 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   4: number   =    31758
+                  mean     =       0.0015 (close to 0.0?)
+                  variance =       1.0071 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   5: number   =    31758
+                  mean     =       0.0075 (close to 0.0?)
+                  variance =       1.0053 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   6: number   =    31758
+                  mean     =      -0.0045 (close to 0.0?)
+                  variance =       0.9989 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   7: number   =    31758
+                  mean     =       0.0050 (close to 0.0?)
+                  variance =       0.9967 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   8: number   =    31758
+                  mean     =       0.0019 (close to 0.0?)
+                  variance =       0.9913 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization   9: number   =    31758
+                  mean     =       0.0086 (close to 0.0?)
+                  variance =       1.0059 (close to gammabar(V,V)? approx. 1.0)
+
+
+ Realization  10: number   =    31758
+                  mean     =       0.0063 (close to 0.0?)
+                  variance =       1.0020 (close to gammabar(V,V)? approx. 1.0)
+

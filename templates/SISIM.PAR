@@ -1,0 +1,54 @@
+                  Parameters for SISIM
+                  ********************
+
+START OF PARAMETERS:
+1                             \vartype # 1=continuous(cdf), 0=categorical(pdf)
+5                             \ncat # number thresholds/categories
+0.5   1.0   2.5   5.0   10.0  \cut1, cut2, cut3, cut4, cut5 # thresholds
+0.12  0.29  0.50  0.74  0.88  \cdf1, cdf2, cdf3, cdf4, cdf5 # global_cdf or pdf
+../data/cluster.dat           \file_data # dataset file
+1   2   3    4     5    6     \X, Y, Z, var, sec_var, wt # the columns for the x, y, and z coordinates, the variable to be estimated, and the external drift variable (or non-stationary mean).
+direct.ik                     \directik # file with soft indicator input
+1   2   0   3 4 5 6 7         \icolx, icoly, icolz, icoli # the columns for the x, y, and z coordinates, and the indicator variables.   columns for X,Y,Z, and indicators
+0                             \Markov_Bayes_flg #  Markov_Bayes_flg simulation (0=no,1=yes)
+0.61  0.54  0.56  0.53  0.29  \Bz_values #      calibration B(z) values
+-1.0e21    1.0e21             \trimming_limits # trimming_limits
+0.0   30.0                    \min_value, max_value # maximum data value
+1      0.0                    \lower_tail, lower_tail_param # option and parameter
+1      1.0                    \ middle_option, middl_param # option and parameter
+1     30.0                    \upper_tail, upper_param # option and parameter
+cluster.dat                   \tabu_values_files #file with tabulated values
+3   0                         \var_columns#      columns for variable, weight
+0                             \debugging_level # 0,1,2,3
+sisim.dbg                     \debuf_file # file for debugging output
+sisim.out                     \output_file # file for simulation output
+1                             \nsim # number of realizations
+50   0.5    1.0               \nx,xmn,xsiz # jj
+50   0.5    1.0               \ny,ymn,ysiz # kk
+1    1.0   10.0               \nz,zmn,zsiz # ll
+69069                         \seed_num # random number seed
+12                            \max_data_points # maximum original data  for each kriging
+12                            \max_prev_points # maximum previous nodes for each kriging
+1                             \max_soft_indic # maximum soft indicator nodes for kriging
+1                             \flg_assign_data # assign data to nodes? (0=no,1=yes)
+0     3                       \flg_grd_search, grd_num # multiple grid search? (0=no,1=yes),num
+0                             \maximum_per_octant #    (0=not used)
+20.0  20.0  20.0              \radius_hmax, radius_hmin, radius_vert # the search radii in the maximum horizontal direction, minimum horizontal direction, and vertical direction (see angles below). maximum search radii (hmax,hmin,vert)
+ 0.0   0.0   0.0              \sang1, sang2, sang3 # the angle parameters that describe the orientation of the search ellipsoid. See the discussion on anisotropy specification associated with Figure II.4. .angles for search ellipsoid
+0    2.5                      \0=full IK, 1=median approx. (cutoff)
+0                             \0=SK, 1=OK
+1    0.15                     \One   nst, nugget effect
+1    0.85 0.0   0.0   0.0     \      it,cc,ang1,ang2,ang3
+         10.0  10.0  10.0     \      a_hmax, a_hmin, a_vert
+1    0.10                     \Two   nst, nugget effect
+1    0.90 0.0   0.0   0.0     \      it,cc,ang1,ang2,ang3
+         10.0  10.0  10.0     \      a_hmax, a_hmin, a_vert
+1    0.10                     \Three nst, nugget effect
+1    0.90 0.0   0.0   0.0     \      it,cc,ang1,ang2,ang3
+         10.0  10.0  10.0     \      a_hmax, a_hmin, a_vert
+1    0.10                     \Four  nst, nugget effect
+1    0.90 0.0   0.0   0.0     \      it,cc,ang1,ang2,ang3
+         10.0  10.0  10.0     \      a_hmax, a_hmin, a_vert
+1    0.15                     \Five  nst, nugget effect
+1    0.85 0.0   0.0   0.0     \      it,cc,ang1,ang2,ang3
+         10.0  10.0  10.0     \      a_hmax, a_hmin, a_vert

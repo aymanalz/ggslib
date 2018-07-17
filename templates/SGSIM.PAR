@@ -1,0 +1,36 @@
+                  Parameters for SGSIM
+                  ********************
+
+START OF PARAMETERS:
+../data/cluster.dat           \data_file # file with data
+1   2   3    4     5    6     \X, Y, Z, var, sec_var, wt # the columns for the x, y, and z coordinates, the variable to be estimated, and the external drift variable (or non-stationary mean).
+-1.0e21   1.0e21              \ trim_low, trim_up # all values strictly less than tmin and greater than or equal to tmax are ignored.
+0                             \transform_data # transform the data (0=no, 1=yes)
+sgsim.trn                     \transform_data_file # file for output trans table
+0                             \ismooth # if set to 0, then the data histogram, possibly with declustering weights is used for transformation, if set to 1, then the da1ta are transformed according to the values in another file (perhaps from histogram smoothing).   consider ref. dist (0=no, 1=yes)
+histsmth.out                  \ smthfl # file with the values to use for transformation to normal scores (if ismooth is set to 0).  file with ref. dist distribution
+1  2                          \ icolvr , icolwt # columns in smthfl for the variable and the declustering weight (set to 1 and 2 if smthfl is the output from histsmth). 
+-5    5                   \zmin,zmax # the minimum and maximum allowable data values. These are used in the back transformation procedure.
+1       -5                   \ltail, tpar # specify the back transformation implementation in the lower tail of the distribution: ltail=1 implements linear interpolation to the lower limit zmin, and ltail=2 implements power model interpolation, with w=ltpar, to the lower limit zmin.
+1      5                   \ utail, utpar # specify the back transformation implementation in the upper tail of the distribution: utail=1 implements linear interpolation to the upper limit zmax, utail=2 implements power model interpolation, with w=utpar, to the upper limit zmax, and utail=4 implements hyperbolic model extrapolation with w=utpar. The hyperbolic tail extrapolation is limited by zmax.
+1                             \idbg # an integer debugging level between 0 and 3. The larger the debugging level the more information written out. 
+sgsim.dbg                     \dbgfl# the file for the debugging output. 
+sgsim.out                     \outfl # the output grid is written to this file. The output file will contain the results, cycling fastest on x then y then z then simulation by simulation. 
+1                             \nsim # the number of simulations to generate
+50    0.5    1.0              \nx,xmn,xsiz # definition of the grid system (x axis).
+50    0.5    1.0              \ny,ymn,ysiz # definition of the grid system (x axis).
+1     0.5    1.0              \nz,zmn,zsiz # definition of the grid system (x axis).
+69069                         \seed # seed number
+0     8                       \ndmin, ndmax # the minimum and maximum number of original data that should be used to simulate a grid node. If there are fewer than ndmin data points the node is not simulated. 
+12                            \ncnode # the maximum number of previously simulated nodes to use for the simulation of another node. 
+1                             \sstrat # if set to 0, the data and previously simulated grid nodes are searched separately: the data are searched with a super block search and the previously simulated nodes are searched with a spiral search (see section II.4). If set to 1, the data are relocated to grid nodes and a spiral search is used and the parameters ndmin and ndmax are not considered. assign data to nodes (0=no, 1=yes)
+1     3                       \multgrid, multgrdvar # a multiple grid simulation will be performed if this is set to 1 (otherwise a standard spiral search for previously simulated nodes is considered). multiple grid search (0=no, 1=yes),num
+0                             \nmult # the number of multiple grid refinements to consider (used only if multgrid is set to 1).maximum data per octant (0=not used)
+10.0  10.0  10.0              \radius_hmax, radius_hmin, radius_vert # the search radii in the maximum horizontal direction, minimum horizontal direction, and vertical direction (see angles below). maximum search radii (hmax,hmin,vert)
+0.0   0.0   0.0              \sang1, sang2, sang3 # the angle parameters that describe the orientation of the search ellipsoid. See the discussion on anisotropy specification associated with Figure II.4. .angles for search ellipsoid
+0     0.60   1.0              \ktype, skmean, roh # 0=SK,1=OK,2=LVM,3=EXDR,4=COLC
+../data/ydata.dat             \ secfl # the file for the locally varying mean, the external drift variable, or the secondary variable for collocated cokriging (the secondary variable must be gridded at the same resolution as the model being constructed by sgsim).  file with LVM, EXDR, or COLC variable
+4                             \sec_col#  column for secondary variable
+1    0.1                      \nst, c0 # the number of semivariogram structures and the isotropic nugget constant.
+1    0.9  0.0   0.0   0.0     \it,cc,ang1,ang2,ang3 # For each of the nst nested structures one must define it, the type of structure; cc, the c parameter; ang1,ang2,ang3, the angles defining the geometric anisotropy.
+         10.0  10.0  10.0     \a_hmax, a_hmin, a_vert # aa_hmax, the maximum horizontal range; aa_hmin, the minimum horizontal range; and aa_vert, the vertical range.
