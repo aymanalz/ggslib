@@ -110,11 +110,6 @@ class Gaussian_Field(Covariance):
             sim_flg[nodes_block] = 1
             xx = 1
 
-
-
-
-
-
     def gen_real(self, data, unsamp_loc):
         nd = np.shape(data)[0]
         ns = np.shape(unsamp_loc)[0]

@@ -1,10 +1,10 @@
 _Auther__ = "Ayman H. Alzraiee"
 __Vesrion__ = 1.0
-__Date__ = "1-5-2017"
+__Date__ = "1-5-2015"
 
 """
-A class to generate GSLIB input files , run GSLIB, and reach output
-This class uses inherent objects from Grid, Variogram, and Dataset classes  
+A class to generate GSLIB input files , run GSLIB, and read output.
+This class inherent objects from Grid, Variogram, and Dataset classes  
 """
 
 
@@ -25,16 +25,27 @@ from subprocess import PIPE, STDOUT
 import matplotlib.pyplot as plt
 
 class Sgsim(object):
+    """
+
+    Sequential Gaussian simulation:
+    Help URL: http://www.gslib.com/gslib_help/sgsim.html
+
+    Sgsim is class that uses database class (hard data file), grid class, and variogram class.
+    Example: see the ___main__ function at the end of this file
+
+    For help about any object members use [print(objct.MembaerName_), for example to find information about
+    sg.sim, you can print sg.nsim_
+    """
     def __init__(self, ws = os.getcwd(), par_file='sgsim.par', grid = Grid,
                  dataset=Dataset,
                  variogram = Variogram):
         """
 
-        :param ws:
-        :param par_file:
-        :param grid:
-        :param dataset:
-        :param variogram:
+        :param ws: working space
+        :param par_file: Parameter file name used by GSLIB, the default is sgsim.par
+        :param grid: An object for a grid class
+        :param dataset: An object for observation data
+        :param variogram: An object from variogram class
         """
         self.ws = ws
         self.par_file = par_file
@@ -47,8 +58,9 @@ class Sgsim(object):
 
     def write_file(self):
         """
+        Write the parameter file, which is the input for sgsim execuatble
 
-        :return:
+        :return: None
         """
         self.update_file_content()
         fname = os.path.join(self.ws, self.par_file)
@@ -66,7 +78,12 @@ class Sgsim(object):
 
     def update_file_content(self):
 
-        # update dataset
+        """
+        Before runing sgsim, this function updates all class members with new values if there is any
+
+        :return:
+        """
+         # update dataset
         if hasattr(self.dataset, 'filename'):
             self.data_file = os.path.join(self.ws, self.dataset.filename)
         else: # unconditional simulation
@@ -81,6 +98,7 @@ class Sgsim(object):
 
     def update_variogram(self):
         """
+
 
         """
         # we support only one variogram
@@ -216,15 +234,14 @@ class Sgsim(object):
         setattr(self, 'file_content_fields', file_content_fields)
 
     def plot(self, nodata = -999, realn = 1):
+
         idx = 0
         data = self.output['data']
-
         for col in self.output['columns']:
             plt.subplot(1,1,idx+1)
             curr_ = data[:,realn]
             curr_ = curr_.astype('float')
             curr_ = np.reshape(curr_,(self.ny, self.nx))
-            #curr_ = np.flipud(curr_)
             x_x = np.linspace(self.xmn,self.grid.grid_dict['lenX'], self.nx)
             y_y = np.linspace(self.ymn, self.grid.grid_dict['lenY'], self.ny)
             xx, yy = np.meshgrid(x_x,y_y)
@@ -234,32 +251,40 @@ class Sgsim(object):
             plt.colorbar()
             idx = idx + 1
 
-
-
-
-
-
-
 if __name__ == "__main__":
+
+    # Initialize Sgsim object
     sg = Sgsim(ws = ".\working_directory")
 
-    # input dataset
-    X = np.random.rand(50)*50.0
-    X[0] = X[0] + 60
+    # grid to be used. you can use diectionary for grid info.
+    gr = {'lenX': 50,
+          'lenY': 100,
+          'lenZ': 1,
+          'nlays': 1,
+          'ncols': 237,
+          'nrows': 134,
+          'origin': [0, 0, 0]}
 
-    Y = np.random.rand(50)*50.0
-    Z = np.random.rand(50)
+    grid = sg.grid
+    grid.grid_dict = gr
+
+    # Generate a random set of observations locations and values
+    X = np.random.rand(50)*50.0 # x-coord
+    X[0] = X[0] + 60
+    Y = np.random.rand(50)*50.0 # y-coord
+    Z = np.random.rand(50) # z-coord, for 2D make z constant
     Z = Z / Z
-    primary_value = np.random.rand(50)*3.0
+    primary_value = np.random.rand(50)*3.0 # values of measured parameters to be simulated (e.g. Coductivity)
     primary_value[0] = primary_value[0] * 1000
+
+    # Assign artificail data to dataset class, if uncoditional simulation is used this will not used
     dts = sg.dataset()
     dts.filename = "data1.dat"
     dts.x = X
     dts.y = Y
     dts.z = Z
-    plt.scatter(X, Y)
     dts.primary = primary_value
-    #sg.dataset = dts
+    #sg.dataset = dts    # uncoditional simulation --- dataset is not used
 
     # input variogram
     vario = sg.variogram()
@@ -278,25 +303,9 @@ if __name__ == "__main__":
     sg.max_data_points = 20
     sg.min_data_points = 4
 
-    # input grid
-    gr = {'lenX': 50,  #
-          'lenY': 100,  # Lx
-          'lenZ': 1,
-          'nlays': 1,
-          'ncols': 237,
-          'nrows': 134,
-          'origin': [0, 0, 0]}
-
-    grid = sg.grid
-    grid.grid_dict = gr
     #sg.grid = grid
     sg.krige_type = 1 # ordinary
     sg.nsim = 10
     sg.run()
     sg.plot(nodata=-999, realn = 2)
-    plt.scatter(X, Y,color = 'k')
     plt.show()
-
-    x = 1
-
-    pass

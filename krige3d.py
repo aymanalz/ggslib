@@ -1,6 +1,9 @@
+_Auther__ = "Ayman H. Alzraiee"
+__Vesrion__ = 1.0
+__Date__ = "11-10-2014"
+
 import os, sys
 import numpy as np
-import pandas as pd
 from dataset import Dataset
 from variogram import Variogram
 from grid import Grid
@@ -12,7 +15,6 @@ class Kriging(object):
     def __init__(self, ws = os.getcwd(), par_file='krige.par', grid = Grid,
                  dataset=Dataset,
                  variogram = Variogram):
-
 
         self.ws = ws
         self.par_file = par_file
@@ -42,7 +44,6 @@ class Kriging(object):
 
         # update dataset
         self.data_file = os.path.join(self.ws, self.dataset.filename)
-
 
         # update grid
         self.update_grid()
@@ -189,8 +190,10 @@ class Kriging(object):
 
         idx = 0
         data = self.output['data']
+        titles = ['Krigged Data', ' Standard Deviation']
         for col in self.output['columns']:
             plt.subplot(1,2,idx+1)
+            plt.title(titles[idx])
             curr_ = data[:,idx]
             curr_ = curr_.astype('float')
             curr_ = np.reshape(curr_,( self.ny, self.nx))
@@ -201,15 +204,10 @@ class Kriging(object):
             loc = np.where(curr_ == nodata)
             curr_[loc] = np.nan
             plt.pcolormesh(xx,yy,curr_,cmap='jet')
+            plt.xlim([min(x_x), max(x_x)])
+            plt.ylim([min(y_y), max(y_y)])
             plt.colorbar()
-
             idx = idx + 1
-
-
-
-
-
-
 
 if __name__ == "__main__":
     kg = Kriging(ws = ".\working_directory")
@@ -265,7 +263,3 @@ if __name__ == "__main__":
     plt.hold(True)
     plt.scatter(X, Y,color = 'k')
     plt.show()
-
-    x = 1
-
-    pass

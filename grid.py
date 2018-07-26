@@ -1,4 +1,3 @@
-__author__ = "Ayman H Alzraiee"
 import os, sys
 import numpy as np
 
